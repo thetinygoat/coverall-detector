@@ -6,9 +6,8 @@ from keras.preprocessing.sequence import pad_sequences
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 
-cors = CORS(app)
-
 app = Flask(__name__)
+cors = CORS(app)
 
 tokenizer = None
 with open("newsfn-word-index.pickle", "rb") as handle:
