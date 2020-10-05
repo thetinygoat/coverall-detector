@@ -4,6 +4,9 @@ import requests
 from bs4 import BeautifulSoup
 from keras.preprocessing.sequence import pad_sequences
 from flask import Flask, request, jsonify
+from flask_cors import CORS, cross_origin
+
+cors = CORS(app)
 
 app = Flask(__name__)
 
@@ -16,6 +19,7 @@ word_index = tokenizer.word_index
 
 
 @app.route("/predict", methods=["POST"])
+@cross_origin()
 def predict():
     content = request.json
     url = content["url"]
